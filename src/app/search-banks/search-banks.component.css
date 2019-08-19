@@ -1,0 +1,68 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.ifsc {
+  width: 100px;
+}
+.branch {
+  width: 100px;
+}
+.bankId {
+  width: 60px;
+}
+.bankName {
+  width: 210px;
+}
+.address {
+  width: 360px;
+}
+.city {
+  width: 100px;
+}
+.district {
+  width: 70px;
+}
+.state {
+  width: 100px;
+}
+/* Absolute Center Spinner */
+.loading-indicator {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading-indicator:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.formLoc {
+  width: 15%;
+}
+.formFilter {
+  width: 85%;
+  padding-left: 2%;
+}
+.rowData:hover {
+  background-color: rgba(142, 145, 161, 0.096);
+}
