@@ -19,12 +19,12 @@ export class FavBanksComponent implements OnInit {
   displayedColumns: string[] = [
     "ifsc",
     "bank_name",
-    "bank_id",
+    // "bank_id",
     "branch",
-    "address",
-    "city",
-    "district",
-    "state"
+    "address"
+    // "city",
+    // "district",
+    // "state"
   ];
   dataSource: MatTableDataSource<Bank>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

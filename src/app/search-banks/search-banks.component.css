@@ -8,19 +8,19 @@ table {
 }
 
 .ifsc {
-  width: 100px;
+  width: 150px;
 }
 .branch {
-  width: 100px;
+  width: 250px;
 }
 .bankId {
   width: 60px;
 }
 .bankName {
-  width: 210px;
+  width: 250px;
 }
 .address {
-  width: 360px;
+  width: auto;
 }
 .city {
   width: 100px;

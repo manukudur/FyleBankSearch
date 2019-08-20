@@ -21,12 +21,12 @@ export class SearchBanksComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     "ifsc",
     "bank_name",
-    "bank_id",
+    // "bank_id",
     "branch",
-    "address",
-    "city",
-    "district",
-    "state"
+    "address"
+    // "city",
+    // "district",
+    // "state"
   ];
   dataSource: MatTableDataSource<Bank>;
   locations: string[] = [
