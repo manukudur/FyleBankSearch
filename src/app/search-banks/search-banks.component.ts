@@ -36,7 +36,8 @@ export class SearchBanksComponent implements OnInit, OnDestroy {
     "Mysore",
     "Ramanagara",
     "Magadi",
-    "Kudur"
+    "Kudur",
+    "Nelamangala"
   ];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
