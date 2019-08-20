@@ -1,0 +1,67 @@
+<div mat-dialog-content>
+  <h1 style="color: blue">{{ data.bank_name }}</h1>
+  <table>
+    <tr>
+      <td>
+        <p><strong>Branch</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 200px">{{ data.branch }}</td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>Bank ID</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 200px">{{ data.bank_id }}</td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>IFSC</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 200px">{{ data.ifsc }}</td>
+    </tr>
+    <tr>
+      <td style="padding-bottom: 20px;">
+        <p style="margin-top: 0px"><strong>Address</strong></p>
+      </td>
+      <td style="padding-bottom: 20px;">:</td>
+      <td style="width: 470px">{{ data.address }}</td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>City</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 470px">{{ data.city }}</td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>District</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 470px">{{ data.district }}</td>
+    </tr>
+    <tr>
+      <td>
+        <p><strong>State</strong></p>
+      </td>
+      <td>:</td>
+      <td style="width: 470px">{{ data.state }}</td>
+    </tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="onNoClick()">
+    Close
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+  >
+    Remove from Favourite
+  </button>
+</div>

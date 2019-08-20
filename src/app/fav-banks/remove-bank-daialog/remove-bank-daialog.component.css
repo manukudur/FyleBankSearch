@@ -1,0 +1,9 @@
+tr,
+td,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+button {
+  margin-right: 8px;
+}

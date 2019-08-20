@@ -1,18 +1,23 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Subscription } from "rxjs/internal/Subscription";
 
 import { BankService } from "../bank.service";
 import { Bank } from "../models/Bank";
+import { BankDetailsDaialogComponent } from "./bank-details-daialog/bank-details-daialog.component";
 
 @Component({
   selector: "app-search-banks",
   templateUrl: "./search-banks.component.html",
   styleUrls: ["./search-banks.component.css"]
 })
-export class SearchBanksComponent implements OnInit {
+export class SearchBanksComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
+  subscription: Subscription;
   displayedColumns: string[] = [
     "ifsc",
     "bank_name",
@@ -36,7 +41,11 @@ export class SearchBanksComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private bankService: BankService) {}
+  constructor(
+    private bankService: BankService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.loadBanksInfo();
@@ -51,7 +60,7 @@ export class SearchBanksComponent implements OnInit {
   }
 
   loadBanksInfo() {
-    this.bankService.getBanks().subscribe(bankData => {
+    this.subscription = this.bankService.getBanks().subscribe(bankData => {
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(bankData);
       this.dataSource.paginator = this.paginator;
@@ -65,7 +74,25 @@ export class SearchBanksComponent implements OnInit {
     this.bankService.onChangeLocation(changedLocation);
     this.loadBanksInfo();
   }
-  rowClick(row) {
-    console.log(row);
+
+  rowClick(rowData): void {
+    const dialogRef = this.dialog.open(BankDetailsDaialogComponent, {
+      data: rowData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.bankService.setLocalFavouriteBanks(result);
+        this.openSnackBar();
+      }
+    });
+  }
+  openSnackBar() {
+    this._snackBar.open("Bank is added to Favourite", "Close", {
+      duration: 2000
+    });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

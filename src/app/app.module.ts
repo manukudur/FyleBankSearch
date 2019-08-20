@@ -17,12 +17,17 @@ import { MatSortModule } from "@angular/material/sort";
 import { HttpClientModule } from "@angular/common/http";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
+import { MatDialogModule } from "@angular/material/dialog";
+import { FormsModule } from "@angular/forms";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { AppComponent } from "./app.component";
 import { SearchBanksComponent } from "./search-banks/search-banks.component";
 import { FavBanksComponent } from "./fav-banks/fav-banks.component";
 import { NavBarComponent } from "./nav-bar/nav-bar.component";
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { BankDetailsDaialogComponent } from "./search-banks/bank-details-daialog/bank-details-daialog.component";
+import { RemoveBankDaialogComponent } from "./fav-banks/remove-bank-daialog/remove-bank-daialog.component";
 
 @NgModule({
   declarations: [
@@ -30,8 +35,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SearchBanksComponent,
     FavBanksComponent,
     NavBarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BankDetailsDaialogComponent,
+    RemoveBankDaialogComponent
   ],
+  entryComponents: [BankDetailsDaialogComponent, RemoveBankDaialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +58,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatSortModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
