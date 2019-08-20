@@ -16,6 +16,7 @@ import { RemoveBankDaialogComponent } from "./remove-bank-daialog/remove-bank-da
   styleUrls: ["./fav-banks.component.css"]
 })
 export class FavBanksComponent implements OnInit {
+  isEmpty: boolean;
   displayedColumns: string[] = [
     "ifsc",
     "bank_name",
@@ -29,7 +30,7 @@ export class FavBanksComponent implements OnInit {
   dataSource: MatTableDataSource<Bank>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-
+  localBanks: Bank[] = [];
   constructor(
     private bankService: BankService,
     public dialog: MatDialog,
@@ -38,13 +39,18 @@ export class FavBanksComponent implements OnInit {
 
   ngOnInit() {
     this.loadBanksInfo();
+    this.checkIsEmpty();
   }
-
-  loadBanksInfo() {
-    let localBanks = this.bankService.getLocalFavouriteBanks();
-    if (!localBanks) {
+  checkIsEmpty() {
+    if (this.localBanks.length === 0) {
+      this.isEmpty = true;
+    } else {
+      this.isEmpty = false;
     }
-    this.dataSource = new MatTableDataSource(localBanks);
+  }
+  loadBanksInfo() {
+    this.localBanks = this.bankService.getLocalFavouriteBanks();
+    this.dataSource = new MatTableDataSource(this.localBanks);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -65,6 +71,7 @@ export class FavBanksComponent implements OnInit {
         this.bankService.removeBankFromLocalFavourite(result);
         this.openSnackBar();
         this.loadBanksInfo();
+        this.checkIsEmpty();
       }
     });
   }

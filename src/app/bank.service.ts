@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class BankService {
-  private location: string = "";
+  private location: string = "tumkur";
   constructor(private http: HttpClient) {
     if (!localStorage.getItem("favouriteBanks")) {
       localStorage.setItem("favouriteBanks", JSON.stringify([]));

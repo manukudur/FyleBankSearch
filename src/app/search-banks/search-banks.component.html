@@ -3,7 +3,7 @@
 </div>
 <div style="display: flex">
   <mat-form-field class="formLoc">
-    <mat-select placeholder="Location" required>
+    <mat-select placeholder="Location" required value="Tumkur">
       <mat-option
         (click)="onChangeLocation(location)"
         *ngFor="let location of locations"
@@ -47,12 +47,12 @@
       </td>
     </ng-container>
     <!-- Bank ID Column -->
-    <ng-container matColumnDef="bank_id">
+    <!-- <ng-container matColumnDef="bank_id">
       <th class="bankId" mat-header-cell *matHeaderCellDef mat-sort-header>
         Bank ID
       </th>
       <td class="bankId" mat-cell *matCellDef="let row">{{ row.bank_id }}</td>
-    </ng-container>
+    </ng-container> -->
     <!-- Address Column -->
     <ng-container matColumnDef="address">
       <th class="address" mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -61,30 +61,30 @@
       <td class="address" mat-cell *matCellDef="let row">{{ row.address }}</td>
     </ng-container>
     <!-- City Column -->
-    <ng-container matColumnDef="city">
+    <!-- <ng-container matColumnDef="city">
       <th class="city" mat-header-cell *matHeaderCellDef mat-sort-header>
         City
       </th>
       <td class="city" mat-cell *matCellDef="let row">{{ row.city }}</td>
-    </ng-container>
+    </ng-container> -->
     <!-- District Column -->
-    <ng-container matColumnDef="district">
+    <!-- <ng-container matColumnDef="district">
       <th class="district" mat-header-cell *matHeaderCellDef mat-sort-header>
         District
       </th>
       <td class="district" mat-cell *matCellDef="let row">
         {{ row.district }}
       </td>
-    </ng-container>
+    </ng-container> -->
     <!-- state Column -->
-    <ng-container matColumnDef="state">
+    <!-- <ng-container matColumnDef="state">
       <th class="state" mat-header-cell *matHeaderCellDef mat-sort-header>
         State
       </th>
       <td class="state" mat-cell *matCellDef="let row">
         {{ row.state }}
       </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr

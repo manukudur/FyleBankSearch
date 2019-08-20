@@ -1,87 +1,100 @@
-<div>
-  <mat-form-field>
-    <input
-      matInput
-      (keyup)="applyFilter($event.target.value)"
-      placeholder="Filter"
-    />
-  </mat-form-field>
+<div *ngIf="isEmpty; else elseBlock">
+  <h1>You have no Favourite Banks</h1>
+  <p>
+    Click <a mat-stroked-button class="links" routerLink="/banks">Here</a> to
+    add....!
+  </p>
 </div>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-    <!-- Ifsc Column -->
-    <ng-container matColumnDef="ifsc">
-      <th class="ifsc" mat-header-cell *matHeaderCellDef mat-sort-header>
-        IFSC
-      </th>
-      <td class="ifsc" mat-cell *matCellDef="let row">{{ row.ifsc }}</td>
-    </ng-container>
-    <!-- Branch Column -->
-    <ng-container matColumnDef="branch">
-      <th class="branch" mat-header-cell *matHeaderCellDef mat-sort-header>
-        Branch
-      </th>
-      <td class="branch" mat-cell *matCellDef="let row">{{ row.branch }}</td>
-    </ng-container>
-    <!-- Bank Name Column -->
-    <ng-container matColumnDef="bank_name">
-      <th class="bankName" mat-header-cell *matHeaderCellDef mat-sort-header>
-        Bank Name
-      </th>
-      <td class="bankName" mat-cell *matCellDef="let row">
-        {{ row.bank_name }}
-      </td>
-    </ng-container>
-    <!-- Bank ID Column -->
-    <ng-container matColumnDef="bank_id">
-      <th class="bankId" mat-header-cell *matHeaderCellDef mat-sort-header>
-        Bank ID
-      </th>
-      <td class="bankId" mat-cell *matCellDef="let row">{{ row.bank_id }}</td>
-    </ng-container>
-    <!-- Address Column -->
-    <ng-container matColumnDef="address">
-      <th class="address" mat-header-cell *matHeaderCellDef mat-sort-header>
-        Address
-      </th>
-      <td class="address" mat-cell *matCellDef="let row">
-        {{ row.address }}
-      </td>
-    </ng-container>
-    <!-- City Column -->
-    <ng-container matColumnDef="city">
-      <th class="city" mat-header-cell *matHeaderCellDef mat-sort-header>
-        City
-      </th>
-      <td class="city" mat-cell *matCellDef="let row">{{ row.city }}</td>
-    </ng-container>
-    <!-- District Column -->
-    <ng-container matColumnDef="district">
-      <th class="district" mat-header-cell *matHeaderCellDef mat-sort-header>
-        District
-      </th>
-      <td class="district" mat-cell *matCellDef="let row">
-        {{ row.district }}
-      </td>
-    </ng-container>
-    <!-- state Column -->
-    <ng-container matColumnDef="state">
-      <th class="state" mat-header-cell *matHeaderCellDef mat-sort-header>
-        State
-      </th>
-      <td class="state" mat-cell *matCellDef="let row">
-        {{ row.state }}
-      </td>
-    </ng-container>
+<ng-template #elseBlock>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Filter"
+      />
+    </mat-form-field>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Ifsc Column -->
+      <ng-container matColumnDef="ifsc">
+        <th class="ifsc" mat-header-cell *matHeaderCellDef mat-sort-header>
+          IFSC
+        </th>
+        <td class="ifsc" mat-cell *matCellDef="let row">{{ row.ifsc }}</td>
+      </ng-container>
+      <!-- Branch Column -->
+      <ng-container matColumnDef="branch">
+        <th class="branch" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Branch
+        </th>
+        <td class="branch" mat-cell *matCellDef="let row">
+          {{ row.branch }}
+        </td>
+      </ng-container>
+      <!-- Bank Name Column -->
+      <ng-container matColumnDef="bank_name">
+        <th class="bankName" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Bank Name
+        </th>
+        <td class="bankName" mat-cell *matCellDef="let row">
+          {{ row.bank_name }}
+        </td>
+      </ng-container>
+      <!-- Bank ID Column -->
+      <!-- <ng-container matColumnDef="bank_id">
+        <th class="bankId" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Bank ID
+        </th>
+        <td class="bankId" mat-cell *matCellDef="let row">
+          {{ row.bank_id }}
+        </td>
+      </ng-container> -->
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th class="address" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Address
+        </th>
+        <td class="address" mat-cell *matCellDef="let row">
+          {{ row.address }}
+        </td>
+      </ng-container>
+      <!-- City Column -->
+      <!-- <ng-container matColumnDef="city">
+        <th class="city" mat-header-cell *matHeaderCellDef mat-sort-header>
+          City
+        </th>
+        <td class="city" mat-cell *matCellDef="let row">{{ row.city }}</td>
+      </ng-container> -->
+      <!-- District Column -->
+      <!-- <ng-container matColumnDef="district">
+        <th class="district" mat-header-cell *matHeaderCellDef mat-sort-header>
+          District
+        </th>
+        <td class="district" mat-cell *matCellDef="let row">
+          {{ row.district }}
+        </td>
+      </ng-container> -->
+      <!-- state Column -->
+      <!-- <ng-container matColumnDef="state">
+        <th class="state" mat-header-cell *matHeaderCellDef mat-sort-header>
+          State
+        </th>
+        <td class="state" mat-cell *matCellDef="let row">
+          {{ row.state }}
+        </td>
+      </ng-container> -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      class="rowData"
-      mat-row
-      (click)="rowClick(row)"
-      *matRowDef="let row; columns: displayedColumns"
-    ></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        class="rowData"
+        mat-row
+        (click)="rowClick(row)"
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+    </table>
 
-  <mat-paginator [pageSizeOptions]="[50, 100, 500, 1000]"></mat-paginator>
-</div>
+    <mat-paginator [pageSizeOptions]="[50, 100, 500, 1000]"></mat-paginator>
+  </div>
+</ng-template>
