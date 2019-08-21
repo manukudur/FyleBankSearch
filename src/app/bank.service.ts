@@ -25,7 +25,7 @@ export class BankService {
     return this.getBanks();
   }
 
-  getLocalFavouriteBanks() {
+  getLocalFavouriteBanks(): Bank[] {
     return JSON.parse(localStorage.getItem("favouriteBanks"));
   }
 
